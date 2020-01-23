@@ -353,9 +353,9 @@ public class Pedct2 implements Serializable {
 	//bi-directional many-to-one association to Pedcta
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="codemp", referencedColumnName="codemp"),
-		@JoinColumn(name="dtecta", referencedColumnName="dtecta"),
-		@JoinColumn(name="numcta", referencedColumnName="numcta")
+		@JoinColumn(name="codemp", referencedColumnName="codemp", insertable = false, updatable = false),
+		@JoinColumn(name="dtecta", referencedColumnName="dtecta", insertable = false, updatable = false),
+		@JoinColumn(name="numcta", referencedColumnName="numcta", insertable = false, updatable = false)
 		})
 	private Pedcta pedcta;
 

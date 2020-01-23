@@ -12,15 +12,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.arcasoftwares.model.primaryKey.PedcomPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.arcasoftwares.model.primaryKey.PedcomPK;
 
 /**
  * The persistent class for the pedcom database table.
  * 
  */
 @Entity
-@NamedQuery(name="Pedcom.findAll", query="SELECT p FROM Pedcom p")
+@NamedQuery(name = "Pedcom.findAll", query = "SELECT p FROM Pedcom p")
 public class Pedcom implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -36,13 +37,12 @@ public class Pedcom implements Serializable {
 
 	private String obscom;
 
-	//bi-directional many-to-one association to Pedres
+	// bi-directional many-to-one association to Pedres
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="codemp", referencedColumnName="codemp"),
-		@JoinColumn(name="dteres", referencedColumnName="dteres"),
-		@JoinColumn(name="numres", referencedColumnName="numres")
-		})
+	@JoinColumns({ @JoinColumn(name = "codemp", referencedColumnName = "codemp", insertable = false, updatable = false),
+			@JoinColumn(name = "dteres", referencedColumnName = "dteres", insertable = false, updatable = false),
+			@JoinColumn(name = "numres", referencedColumnName = "numres", insertable = false, updatable = false) })
 	private Pedres pedre;
 
 	public Pedcom() {

@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.arcasoftwares.model.primaryKey.PedproPK;
 
 
@@ -37,11 +39,12 @@ public class Pedpro implements Serializable {
 	private String obspro;
 
 	//bi-directional many-to-one association to Pedres
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="codemp", referencedColumnName="codemp"),
-		@JoinColumn(name="dteres", referencedColumnName="dteres"),
-		@JoinColumn(name="numres", referencedColumnName="numres")
+		@JoinColumn(name="codemp", referencedColumnName="codemp", insertable = false, updatable = false),
+		@JoinColumn(name="dteres", referencedColumnName="dteres", insertable = false, updatable = false),
+		@JoinColumn(name="numres", referencedColumnName="numres", insertable = false, updatable = false)
 		})
 	private Pedres pedre;
 

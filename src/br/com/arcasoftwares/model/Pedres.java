@@ -17,13 +17,12 @@ import javax.persistence.TemporalType;
 
 import br.com.arcasoftwares.model.primaryKey.PedresPK;
 
-
 /**
  * The persistent class for the pedres database table.
  * 
  */
 @Entity
-@NamedQuery(name="Pedres.findAll", query="SELECT p FROM Pedres p")
+@NamedQuery(name = "Pedres.findAll", query = "SELECT p FROM Pedres p")
 public class Pedres implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +31,7 @@ public class Pedres implements Serializable {
 
 	private BigDecimal acrcnd;
 
-	@Column(name="aliq_cred_sn")
+	@Column(name = "aliq_cred_sn")
 	private BigDecimal aliqCredSn;
 
 	private BigDecimal aliqcof;
@@ -41,7 +40,7 @@ public class Pedres implements Serializable {
 
 	private Integer anores;
 
-	@Column(name="app_ver")
+	@Column(name = "app_ver")
 	private Integer appVer;
 
 	private String atuest;
@@ -277,50 +276,50 @@ public class Pedres implements Serializable {
 
 	private String hreres;
 
-	@Column(name="id_esticm")
+	@Column(name = "id_esticm")
 	private Integer idEsticm;
 
-	@Column(name="id_estipi")
+	@Column(name = "id_estipi")
 	private Integer idEstipi;
 
-	@Column(name="id_estsip")
+	@Column(name = "id_estsip")
 	private Integer idEstsip;
 
-	@Column(name="id_fincie")
+	@Column(name = "id_fincie")
 	private Integer idFincie;
 
-	@Column(name="id_finufe")
+	@Column(name = "id_finufe")
 	private Integer idFinufe;
 
-	@Column(name="id_frete")
+	@Column(name = "id_frete")
 	private Integer idFrete;
 
-	@Column(name="id_pedcnd")
+	@Column(name = "id_pedcnd")
 	private Integer idPedcnd;
 
-	@Column(name="id_pedcta")
+	@Column(name = "id_pedcta")
 	private Integer idPedcta;
 
-	@Column(name="id_pedfe2")
+	@Column(name = "id_pedfe2")
 	private Integer idPedfe2;
 
-	@Column(name="id_pedres")
+	@Column(name = "id_pedres")
 	private Integer idPedres;
 
-	@Column(name="id_pedres_orig")
+	@Column(name = "id_pedres_orig")
 	private Integer idPedresOrig;
 
-	@Column(name="id_sepped")
+	@Column(name = "id_sepped")
 	private Integer idSepped;
 
 	private BigDecimal incfin;
 
 	private BigDecimal increv;
 
-	@Column(name="indic_cf")
+	@Column(name = "indic_cf")
 	private Integer indicCf;
 
-	@Column(name="indic_presenca")
+	@Column(name = "indic_presenca")
 	private Integer indicPresenca;
 
 	private String inecli;
@@ -329,7 +328,7 @@ public class Pedres implements Serializable {
 
 	private String intfin;
 
-	@Column(name="is_cta")
+	@Column(name = "is_cta")
 	private Integer isCta;
 
 	private String lanest;
@@ -500,16 +499,16 @@ public class Pedres implements Serializable {
 
 	private BigDecimal sldres;
 
-	@Column(name="sufr_cofins")
+	@Column(name = "sufr_cofins")
 	private String sufrCofins;
 
-	@Column(name="sufr_icms")
+	@Column(name = "sufr_icms")
 	private String sufrIcms;
 
-	@Column(name="sufr_ipi")
+	@Column(name = "sufr_ipi")
 	private String sufrIpi;
 
-	@Column(name="sufr_pis")
+	@Column(name = "sufr_pis")
 	private String sufrPis;
 
 	private String tencli;
@@ -628,42 +627,71 @@ public class Pedres implements Serializable {
 
 	private Integer usurej;
 
-	//bi-directional many-to-one association to Pedcom
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedcom
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedcom> pedcoms;
 
-	//bi-directional many-to-one association to Pedfin
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedfin
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedfin> pedfins;
 
-	//bi-directional many-to-one association to Pedlog
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedlog
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedlog> pedlogs;
 
-	//bi-directional many-to-one association to Pedoco
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedoco
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedoco> pedocos;
 
-	//bi-directional many-to-one association to Pedpro
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedpro
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedpro> pedpros;
 
-	//bi-directional many-to-one association to Pedre2
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedre2
+	@OneToMany(mappedBy = "pedres")
 	private List<Pedre2> pedre2s;
 
-	//bi-directional many-to-one association to Pedre3
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedre3
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedre3> pedre3s;
 
-	//bi-directional many-to-one association to Pedrej
-	@OneToMany(mappedBy="pedre")
+	// bi-directional many-to-one association to Pedrej
+	@OneToMany(mappedBy = "pedre")
 	private List<Pedrej> pedrejs;
 
-	//bi-directional many-to-one association to Pedtip
+	// bi-directional many-to-one association to Pedtip
 	@ManyToOne
-	@JoinColumn(name="codtip")
+	@JoinColumn(name = "codtip")
 	private Pedtip pedtip;
+
+	// bi-directional many-to-one association to Pedtip
+	@ManyToOne
+	@JoinColumn(name = "codcli", insertable = false, updatable = false)
+	private Fincli fincli;
+
+	@ManyToOne
+	@JoinColumn(name = "codven", insertable = false, updatable = false)
+	private Finven finven;
+
+	public Finven getFinven() {
+		return finven;
+	}
+
+	public void setFinven(Finven finven) {
+		this.finven = finven;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "codatd", insertable = false, updatable = false)
+	private Finatd finatd;
+
+	public Finatd getFinatd() {
+		return finatd;
+	}
+
+	public void setFinatd(Finatd finatd) {
+		this.finatd = finatd;
+	}
 
 	public Pedres() {
 	}
@@ -3052,14 +3080,14 @@ public class Pedres implements Serializable {
 
 	public Pedre2 addPedre2(Pedre2 pedre2) {
 		getPedre2s().add(pedre2);
-		pedre2.setPedre(this);
+		pedre2.setPedres(this);
 
 		return pedre2;
 	}
 
 	public Pedre2 removePedre2(Pedre2 pedre2) {
 		getPedre2s().remove(pedre2);
-		pedre2.setPedre(null);
+		pedre2.setPedres(null);
 
 		return pedre2;
 	}
@@ -3116,4 +3144,11 @@ public class Pedres implements Serializable {
 		this.pedtip = pedtip;
 	}
 
+	public Fincli getFincli() {
+		return fincli;
+	}
+
+	public void setFincli(Fincli fincli) {
+		this.fincli = fincli;
+	}
 }

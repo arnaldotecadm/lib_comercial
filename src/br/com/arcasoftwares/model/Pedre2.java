@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.arcasoftwares.model.primaryKey.Pedre2PK;
 
 
@@ -543,13 +545,14 @@ public class Pedre2 implements Serializable {
 	private BigDecimal vrere2;
 
 	//bi-directional many-to-one association to Pedres
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="codemp", referencedColumnName="codemp"),
-		@JoinColumn(name="dteres", referencedColumnName="dteres"),
-		@JoinColumn(name="numres", referencedColumnName="numres")
+		@JoinColumn(name="codemp", referencedColumnName="codemp", insertable = false, updatable = false),
+		@JoinColumn(name="dteres", referencedColumnName="dteres", insertable = false, updatable = false),
+		@JoinColumn(name="numres", referencedColumnName="numres", insertable = false, updatable = false)
 		})
-	private Pedres pedre;
+	private Pedres pedres;
 
 	public Pedre2() {
 	}
@@ -2506,12 +2509,12 @@ public class Pedre2 implements Serializable {
 		this.vrere2 = vrere2;
 	}
 
-	public Pedres getPedre() {
-		return this.pedre;
+	public Pedres getPedres() {
+		return this.pedres;
 	}
 
-	public void setPedre(Pedres pedre) {
-		this.pedre = pedre;
+	public void setPedres(Pedres pedres) {
+		this.pedres = pedres;
 	}
 
 }

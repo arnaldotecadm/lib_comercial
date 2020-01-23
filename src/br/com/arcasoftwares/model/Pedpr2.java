@@ -58,7 +58,7 @@ public class Pedpr2 implements Serializable {
 
 	//bi-directional many-to-one association to Pedprm
 	@ManyToOne
-	@JoinColumn(name="codprm")
+	@JoinColumn(name="codprm", insertable = false, updatable = false)
 	private Pedprm pedprm;
 
 	public Pedpr2() {

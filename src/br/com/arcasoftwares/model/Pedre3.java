@@ -11,6 +11,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.arcasoftwares.model.primaryKey.Pedre3PK;
 
 
@@ -43,11 +45,12 @@ public class Pedre3 implements Serializable {
 	private BigDecimal vlpre3;
 
 	//bi-directional many-to-one association to Pedres
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="codemp", referencedColumnName="codemp"),
-		@JoinColumn(name="dteres", referencedColumnName="dteres"),
-		@JoinColumn(name="numres", referencedColumnName="numres")
+		@JoinColumn(name="codemp", referencedColumnName="codemp", insertable = false, updatable = false),
+		@JoinColumn(name="dteres", referencedColumnName="dteres", insertable = false, updatable = false),
+		@JoinColumn(name="numres", referencedColumnName="numres", insertable = false, updatable = false)
 		})
 	private Pedres pedre;
 

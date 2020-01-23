@@ -1,8 +1,16 @@
 package br.com.arcasoftwares.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -21,6 +29,7 @@ public class Pedtip implements Serializable {
 	private String nomtip;
 
 	//bi-directional many-to-one association to Pedres
+	@JsonIgnore
 	@OneToMany(mappedBy="pedtip")
 	private List<Pedres> pedres;
 
