@@ -16,13 +16,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PedResDTO implements Serializable{
+public class PedResDTO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4132376245716610070L;
-	
+
 	private Integer numres;
 	private FinVenDTO finVenDTO;
 	private FinCliDTO finCliDTO;
@@ -43,8 +43,13 @@ public class PedResDTO implements Serializable{
 	private String sitres;
 	private int qtdimp;
 	private List<PedRe2DTO> pedRe2List;
+	private Integer qtdItens;
 
 	public PedResDTO(Pedres pedres) {
+		this(pedres, true);
+	}
+
+	public PedResDTO(Pedres pedres, boolean addItems) {
 		this.setNumres(pedres.getId().getNumres());
 		if (pedres.getFinven() != null) {
 			this.setFinVenDTO(new FinVenDTO(pedres.getFinven().getCodven(), pedres.getFinven().getNomven()));
@@ -68,14 +73,18 @@ public class PedResDTO implements Serializable{
 		this.setQtdimp(pedres.getQtdimp());
 		this.setDteRes(new SimpleDateFormat("dd/MM/yyyy").format(pedres.getId().getDteres()));
 		this.setDtfres(new SimpleDateFormat("dd/MM/yyyy").format(pedres.getDtfres()));
-		
+
 		/**
 		 * Preencher os itens do Pedido
 		 */
-		
-		if(pedres.getPedre2s() != null && pedres.getPedre2s().size() > 0) {
-			this.pedRe2List = new ArrayList<>();
-			pedres.getPedre2s().forEach((re2) -> this.pedRe2List.add(new PedRe2DTO(re2)));
+
+		qtdItens = pedres.getPedre2s() != null ? pedres.getPedre2s().size() : 0;
+
+		if (addItems) {
+			if (pedres.getPedre2s() != null && pedres.getPedre2s().size() > 0) {
+				this.pedRe2List = new ArrayList<>();
+				pedres.getPedre2s().forEach((re2) -> this.pedRe2List.add(new PedRe2DTO(re2)));
+			}
 		}
 	}
 }
